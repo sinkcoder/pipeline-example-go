@@ -2,15 +2,19 @@ stages:
 - name: Build
   steps:
   - runScriptConfig:
-      image: maven:3-jdk-7
+      image: golang:1.11
       shellScript: |-
-        mvn clean install
+        mkdir -p /go/src/github.com/rancher
+        ln -s `pwd` /go/src/github.com/rancher/pipeline-example-go
+        cd /go/src/github.com/rancher/pipeline-example-go
+        go build -o bin/hello-server
+        go test -cover
 - name: Publish
   steps:
   - publishImageConfig:
       dockerfilePath: https://github.com/sinkcoder/pipeline-example-go/blob/master/Dockerfile
       buildContext: .
-      tag: example-greenhouse:${CICD_EXECUTION_SEQUENCE}
+      tag: example-helloserver:${CICD_EXECUTION_SEQUENCE}
 - name: Deploy
   steps:
   - applyYamlConfig:
