@@ -19,3 +19,9 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: hellogo
+      pushRemote: true
+      registry: registry.cn-hangzhou.aliyuncs.com
