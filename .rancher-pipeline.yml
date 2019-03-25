@@ -15,13 +15,9 @@ stages:
       dockerfilePath: https://github.com/sinkcoder/pipeline-example-go/blob/master/Dockerfile
       buildContext: .
       tag: example-helloserver:${CICD_EXECUTION_SEQUENCE}
+      pushRemote: true
+      registry: registry.cn-hangzhou.aliyuncs.com
 - name: Deploy
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: hellogo
-      pushRemote: true
-      registry: registry.cn-hangzhou.aliyuncs.com
