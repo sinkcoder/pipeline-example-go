@@ -17,17 +17,6 @@ stages:
       tag: example-helloserver:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: registry.cn-hangzhou.aliyuncs.com/microshen
-      env:
-      - name: DOCKER_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            key: admin-token
-            name: aliyuncs
-      - name: DOCKER_USERNAME
-        valueFrom:
-          secretKeyRef:
-            key: admin-user
-            name: aliyuncs
 - name: Deploy
   steps:
   - applyYamlConfig:
