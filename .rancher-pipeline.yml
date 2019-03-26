@@ -12,7 +12,7 @@ stages:
 - name: Publish
   steps:
   - publishImageConfig:
-      dockerfilePath: https://github.com/sinkcoder/pipeline-example-go/blob/master/Dockerfile
+      dockerfilePath: ./Dockerfile
       buildContext: .
       tag: example-helloserver:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
