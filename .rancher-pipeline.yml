@@ -21,8 +21,3 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-    envFrom:
-    - sourceName: p-zqdg4-registrycnhangzhoualiyuncscom
-      sourceKey: username
-    - sourceName: p-zqdg4-registrycnhangzhoualiyuncscommicroshen
-      sourceKey: password
